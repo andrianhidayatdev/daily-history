@@ -1,33 +1,22 @@
 import { useState } from 'react'
-import './App.css'
+import { Routes, Route, Link } from 'react-router-dom'
 import { supabase } from './supabaseClient'
 import { useEffect } from 'react'
+import Master from './pages/Master'
+import MainLayout from './layouts/MainLayout'
+
 function App() {
- const [todos, setTodos] = useState([])
-
-  useEffect(() => {
-    fetchTodos()
-  }, [])
-
-  async function fetchTodos() {
-    const { data } = await supabase.from('menu').select('*')
-    setTodos(data)
-    console.log(data);
-    
-  }
-
-  return (
-    <div style={{ padding: '2rem' }}>
-      <h1>📋 My Todo List</h1>
-      <ul>
-        {todos.map(todo => (
-          <li key={todo.id}>
-            {todo.title} {todo.is_complete ? '✅' : '❌'}
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
+ return <Routes>
+        <Route path="/" element={<MainLayout />}>
+        {/* Ini isi <Outlet /> */}
+        <Route path="master" element={<Master />} />
+        {/* <Route path="task" element={<Task />} /> */}
+        {/* <Route path="transaction" element={<Transaction />} /> */}
+        {/* <Route path="history-trading" element={<HistoryTrading />} /> */}
+        {/* <Route path="notes" element={<Notes />} /> */}
+        </Route>
+      </Routes>
 }
 
 export default App
+ 
