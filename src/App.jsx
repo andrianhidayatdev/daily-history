@@ -10,7 +10,6 @@ import Category from './pages/Category'
 function App() {
  return <Routes>
         <Route path="/" element={<MainLayout />}>
-        {/* Ini isi <Outlet /> */}
         <Route path="master" element={<Master />} />
         <Route path="menu" element={<Menu />} />
         <Route path="category" element={<Category />} />
